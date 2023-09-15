@@ -15,20 +15,20 @@ func main() {
 	fmt.Scanln(&maxIt)
 
 	// Make and display an unsorted slice.
-	slice := makeRandomSlice(numItems, maxIt)
-	printSlice(slice, 40)
+	slice := MakeRandomSlice(numItems, maxIt)
+	PrintSlice(slice, 40)
 	fmt.Println()
 
 	// Sort and display the result.
 	bubbleSort(slice)
-	printSlice(slice, 40)
+	PrintSlice(slice, 40)
 
 	// Verify that it's sorted.
-	checkSorted(slice)
+	CheckSorted(slice)
 }
 
-// Make a slice containing pseudorandom numbers in [0, max).
-func makeRandomSlice(numItems, max int) []int {
+// MakeRandomSlice makes a slice containing pseudorandom numbers in [0, max).
+func MakeRandomSlice(numItems, max int) []int {
 	// Initialize a pseudorandom number generator.
 	random := rand.New(rand.NewSource(time.Now().UnixNano())) // Initialize with a changing seed
 
@@ -39,8 +39,8 @@ func makeRandomSlice(numItems, max int) []int {
 	return slice
 }
 
-// Print at most numItems items.
-func printSlice(slice []int, numItems int) {
+// PrintSlice prints at most numItems items.
+func PrintSlice(slice []int, numItems int) {
 	if len(slice) <= numItems {
 		fmt.Println(slice)
 	} else {
@@ -48,8 +48,8 @@ func printSlice(slice []int, numItems int) {
 	}
 }
 
-// Verify that the slice is sorted.
-func checkSorted(slice []int) {
+// CheckSorted verifies that the slice is sorted.
+func CheckSorted(slice []int) {
 	for i := 1; i < len(slice); i++ {
 		if slice[i-1] > slice[i] {
 			println("The slice is NOT sorted!")
